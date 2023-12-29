@@ -11,9 +11,31 @@
 .logoS{
     display: flex;
     align-items: center;
+    background: #e4eae2;
+    padding: 0 16px;
+    border-radius: 8px;
+    color: #505050;
+    font-size: 16px;
+    font-weight: 600;
 
 }
 .logoImg{
-    height: 60px;
-    width: 60px;
+    height: 65px;
+    width: 65px;
+}
+.logoName{
+    margin-left: 8px;
+}
+.headImg{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+}
+.userName{
+    margin-left: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #505050;
 }

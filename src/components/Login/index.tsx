@@ -1,19 +1,16 @@
-import { Button, Checkbox, Form, Input, Modal, Flex } from "antd";
+import { Button, Checkbox, Form, Input, Modal, Flex, message } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import React, { useState } from "react";
 import store from "@/store";
 import styles from "./index.module.scss";
 export default function index() {
   const [state, dispatch] = store.useModel("index");
-  // 是登录还是注册
-  const [type, setType] = useState<"login" | "register">("login");
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const [form] = Form.useForm();
+  const onFinish = async (values: any) => {
+    const { username, password} = values;
+    dispatch.login({ name:username, password });
   };
 
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
   const onCancel = () => {
     dispatch.closeLogin();
   };
@@ -28,6 +25,7 @@ export default function index() {
         name="normal_login"
         className={styles.loginForm}
         onFinish={onFinish}
+        form={form}
       >
         <Form.Item
           name="username"
@@ -53,11 +51,11 @@ export default function index() {
             <Checkbox>记住我</Checkbox>
           </Form.Item>
 
-          <a href="">忘记密码</a>
+          {/* <a href="">忘记密码</a> */}
         </Flex>
 
         <Flex justify='center'>
-          <Button type="primary" className={styles.loginButton} size="large">
+          <Button type="primary" className={styles.loginButton} size="large" htmlType='submit'>
             登录 / 注册
           </Button>
         </Flex>
